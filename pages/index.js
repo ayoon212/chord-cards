@@ -1,7 +1,14 @@
+/** @jsx jsx */
 import { useState } from 'react';
+import { css, jsx } from '@emotion/core';
 import Head from 'next/head';
 import CardPlay from '../components/card-play';
 import CardSetup from '../components/card-setup';
+
+const headerStyle = css`
+  text-align: left;
+  margin-bottom: 2rem;
+`;
 
 const Home = () => {
   const [isPlaying, setCardPlay] = useState(false);
@@ -14,8 +21,11 @@ const Home = () => {
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <main>
+    <header css={headerStyle}>
       <h1 className="title">Chord Cards</h1>
+    </header>
+
+    <main>
       {isPlaying
         ? <CardPlay
             difficulty={difficulty}
@@ -41,7 +51,7 @@ const Home = () => {
     <style jsx>{`
       .container {
         min-height: 100vh;
-        padding: 0 0.5rem;
+        padding: 0 1rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -49,11 +59,10 @@ const Home = () => {
       }
 
       main {
-        padding: 5rem 0;
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
       }
 
@@ -93,9 +102,8 @@ const Home = () => {
       }
 
       .title {
-        margin: 0;
         line-height: 1.15;
-        font-size: 4rem;
+        font-size: 3.5rem;
       }
 
       .title,

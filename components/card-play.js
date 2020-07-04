@@ -2,14 +2,17 @@
 import { useState } from 'react';
 import { css, jsx } from '@emotion/core';
 import { chords, notes } from '../data';
+import { sharedCardStyle } from '../styles';
 
 const cardStyle = css`
-  border: 1px solid black;
   margin: 0 auto;
-  max-width: 80%;
-  padding: 2rem 0;
   text-align: center;
   width: 200px;
+`;
+const stopButtonStyle = css`
+  display: block;
+  margin: 0 auto;
+  margin-top: 3rem;
 `;
 
 const chordsLength = chords.length;
@@ -27,9 +30,9 @@ export const CardPlay = ({ difficulty, stopCardPlay }) => {
     <section>
       <h2>CardPlay</h2>
       <div>
-        <div css={cardStyle} onClick={() => setChord(generateChord())}>{chord}</div>
+        <div css={[sharedCardStyle, cardStyle]} onClick={() => setChord(generateChord())}>{chord}</div>
       </div>
-      <button onClick={stopCardPlay}>Stop</button>
+      <button css={[sharedCardStyle, stopButtonStyle]} onClick={stopCardPlay}>Stop</button>
     </section>
   );
 }
