@@ -5,6 +5,7 @@ import CardSetup from '../components/card-setup';
 
 const Home = () => {
   const [isPlaying, setCardPlay] = useState(false);
+  const [difficulty, setDifficulty] = useState('easy');
 
   return (
   <div className="container">
@@ -16,8 +17,14 @@ const Home = () => {
     <main>
       <h1 className="title">Chord Cards</h1>
       {isPlaying
-        ? <CardPlay stopCardPlay={() => setCardPlay(false)} />
-        : <CardSetup startCardPlay={() => setCardPlay(true)} />
+        ? <CardPlay
+            difficulty={difficulty}
+            stopCardPlay={() => setCardPlay(false)} />
+        : <CardSetup
+            difficulty={difficulty}
+            setDifficulty={(newVal) => setDifficulty(newVal)}
+            startCardPlay={() => setCardPlay(true)}
+          />
       }
     </main>
 
